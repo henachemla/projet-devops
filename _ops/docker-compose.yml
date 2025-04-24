@@ -1,0 +1,14 @@
+services:
+  node:
+    container_name: projet-devops-node
+    restart: unless-stopped
+    image: projet-devops/node
+    build:
+      context: .
+      dockerfile: ./services/node/Dockerfile
+    ports:
+      - 80:3000
+    volumes:
+      - ../app:/home/node/app
+    env_file:
+      - ./services/node/files/.env
